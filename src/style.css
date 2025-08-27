@@ -1,0 +1,48 @@
+body{
+    font-family:Verdana;
+    font-size: 2em;
+}
+
+#countLabel{
+    display: block;
+    text-align: center;
+    font-size: 10em;
+    font-family: Helvetica;
+}
+
+#btnContainer{
+    text-align: center;
+}
+
+.buttons{
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: hsl(214, 100%, 74%);
+    border-radius: 5px;
+    cursor:pointer;
+    transition: background-color 0.25s;
+}
+
+.buttons:hover{
+    background-color: hsl(214, 100%, 56%);
+}
+
+.myLbls{
+    font-size: 3em;
+}
+
+#sidebar {
+    border: 1px solid black;
+    padding: 12px;
+    min-width: 180px;
+    background: #f9f9f9;
+}
+#sidebar h2 { margin: 0 0 8px; }
+#shiftList button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    cursor: pointer;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Website</title>
+  <link rel="stylesheet" href="schedulestyle.css">
+  <style>
+    /* tiny popup style so you can see it centered */
+    #popup{
+      display:none; position:fixed; top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      background:#fff; border:2px solid #000; padding:16px;
+      box-shadow:0 4px 12px rgba(0,0,0,.3); z-index:9999;
+    }
+    table, th, td { border:1px solid #000; border-collapse:collapse; padding:6px; }
+    #sidebar { margin-top:12px; }
+  </style>
+</head>
+<body>
+
+<div>
+  <h1>Baggers</h1> 
+  <table id="myTable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+        <th>Sábado</th>
+        <th>Domingo</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody><!-- rows will be inserted here automatically --></tbody>
+  </table>
+</div>
+
+<div id="sidebar">
+  <button onclick="openPopup()">Settings</button>
+  <div id="sidebarContent"></div>
+</div>
+
+<div id="popup" style="display:none">
+  <p>Enter info:</p>
+  <input id="popupInput" type="text">
+  <br><br>
+  <button onclick="saveInfo()">Save</button>
+  <button onclick="closePopup()">Cancel</button>
+</div>
+
+<script>
+// Dummy data
+const dummyData = [
+  { name: "John Doe" },
+  { name: "Jane Smith" },
+  { name: "Luis Torres" }
+];
+
+// Build table with all needed cells (Name + 7 days + Total)
+const tableBody = document.querySelector("#myTable tbody");
+dummyData.forEach(row => {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td>${row.name}</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td><td></td><td></td>
+    <td></td>
+  `;
+  tableBody.appendChild(tr);
+});
+
+//Pop up script
+function openPopup(){
+  document.getElementById("popup").style.display="block";
+}
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+function saveInfo(){
+  const value = document.getElementById("popupInput").value;
+  if(value){
+    // Create a new element in the sidebar
+    const p = document.createElement("p");
+    p.textContent = value;
+    document.getElementById("sidebarContent").appendChild(p);
+
+    // Clear the input for next time
+    document.getElementById("popupInput").value = "";
+  }
+  closePopup();
+}
+
+</script>
+
+<p><a href="list.html">back</a></p>
+</body>
+</html>
